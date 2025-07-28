@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found</title>
+  <meta name="description" content="The page you are looking for could not be found.">
+  <link rel="shortcut icon" href="/Fav.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --background-color: #09090b;
+      --text-color: #ffffff;
+      --secondary-text-color: #a1a1aa;
+      --divider-color: #3f3f46;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      background-image:
+        linear-gradient(170deg, rgba(12,12,15,1) 0%, rgba(18,18,24,1) 25%, var(--background-color) 60%),
+        radial-gradient(ellipse at 10% 15%, rgba(60, 70, 160, 0.09) 0%, transparent 60%),
+        radial-gradient(ellipse at 90% 85%, rgba(100, 60, 150, 0.07) 0%, transparent 60%);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 50;
+      backdrop-filter: blur(8px);
+      background-color: rgba(15, 15, 18, 0.7);
+      border-bottom: 1px solid rgba(39, 39, 42, 0.6);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .header-content {
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      height: 4rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text-color);
+    }
+
+    .logo-image {
+      width: 50px;
+      height: auto;
+    }
+
+    .site-name {
+      margin-left: 0.5rem;
+      font-weight: 700;
+      font-size: 1.125rem;
+    }
+
+    .main-content {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .error-message-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .error-code {
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .divider {
+      height: 2.5rem;
+      width: 1px;
+      background-color: var(--divider-color);
+    }
+
+    .error-description {
+      font-size: 1.125rem;
+      color: var(--secondary-text-color);
+    }
+
+    .countdown-timer {
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--secondary-text-color);
+    }
+
+    .countdown-timer a {
+      color: var(--text-color);
+      text-decoration: none;
+      transition: text-decoration 0.2s ease;
+    }
+
+    .countdown-timer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (min-width: 640px) {
+      .error-code {
+        font-size: 3rem;
+      }
+      .error-description {
+        font-size: 1.25rem;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .error-code {
+        font-size: 3.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="/" class="logo-link">
+        <img src="/placeholder.svg?height=50&width=50" alt="mertva.lol Logo" class="logo-image">
+        <span class="site-name">mertva.lol</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="error-message-container">
+      <h1 class="error-code">404</h1>
+      <div class="divider"></div>
+      <p class="error-description">This page could not be found.</p>
+    </div>
+    <div class="countdown-timer">
+      Redirecting to <a href="https://mertva.lol" class="text-white">mertva.lol</a> in <span id="countdown">10</span> seconds...
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const countdownElement = document.getElementById('countdown');
+      let timeLeft = 10;
+
+      const countdownInterval = setInterval(() => {
+        timeLeft--;
+        if (countdownElement) {
+          countdownElement.textContent = timeLeft;
+        }
+
+        if (timeLeft <= 0) {
+          clearInterval(countdownInterval);
+          window.location.href = 'https://mertva.lol';
+        }
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
